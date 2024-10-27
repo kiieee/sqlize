@@ -2,7 +2,7 @@ const Book = require("../models/bookModel");
  
 async function deleteBook(req,res) {
     try {
-        await Book.destroy ({title: req.query.title})
+        await Book.destroy ({where: {title: req.query.title}, truncate: true})
                
             res.status(200).json({message: `Book ${req.body.title} has been removed!`})
     } catch (error) {
